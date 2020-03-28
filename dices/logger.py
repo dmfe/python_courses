@@ -1,6 +1,7 @@
 from datetime import datetime as dt
 from enum import Enum
 
+import helper
 
 class Severity(Enum):
     ERROR = {'str': 'ERROR', 'weight': 5}
@@ -37,8 +38,5 @@ class Logger:
             raise ValueError('Log file is not opened.')
 
         if severity.value['weight'] <= self.log_level.value['weight']:
-            self.log_file.write(f'{self.__cur_ts()} [{severity.value["str"]}] {msg}\n')
-
-    def __cur_ts(self):
-        format_pattern = '%Y-%m-%d %H:%M:%S'
-        return dt.now().strftime(format_pattern)
+            self.log_file.write( \
+            f'{helper.format_cur_ts()} [{severity.value["str"]}] {msg}\n')
