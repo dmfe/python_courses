@@ -4,3 +4,4 @@
 **/*.log
 **/experiment_*
 **/tags
+**/venv
